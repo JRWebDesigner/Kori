@@ -1,22 +1,25 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+import '../styles/global.css';
+import { injectAnimationStyles } from '../utils/scrollAnimations';
+injectAnimationStyles();
+---
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kori Café - Revolución del café boliviano</title>
+  <script>
+    // Inicializa animaciones al cargar
+    document.addEventListener('DOMContentLoaded', () => {
+      import('../utils/scrollAnimations.js').then(module => {
+        module.registerAnimations();
+      });
+    });
+  </script>
+</head>
+<body class="font-sans bg-kori-light text-kori-dark antialiased">
+  <slot />
+</body>
+</html>

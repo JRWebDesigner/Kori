@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom base styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply antialiased bg-kori-light text-kori-dark;
+  }
+  h1, h2, h3, h4 {
+    @apply font-bold tracking-tight;
+  }
+}
+
+/* Custom components */
+@layer components {
+  .btn-primary {
+    @apply px-8 py-3 bg-kori-brown text-white rounded-full font-medium 
+           hover:bg-kori-dark transition-all transform hover:scale-105 
+           shadow-lg hover:shadow-xl inline-flex items-center;
+  }
+  .btn-secondary {
+    @apply px-8 py-3 border-2 border-kori-brown text-kori-brown rounded-full 
+           font-medium hover:bg-kori-brown hover:text-white transition-all 
+           transform hover:scale-105 inline-flex items-center;
+  }
+}
+
+/* Animaciones personalizadas */
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+.animation-delay-2000 {
+  animation-delay: 2s;
+}

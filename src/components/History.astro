@@ -1,0 +1,45 @@
+---
+import { animate } from '../utils/animate.js';
+---
+
+<section class="py-16 px-8 bg-white">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row gap-12 items-center">
+    <div class="md:w-1/2">
+      <h2 
+        class="text-3xl md:text-4xl font-bold text-kori-brown mb-8"
+        use:animate={{ animation: 'fadeInLeft' }}
+      >
+        Nuestra Historia
+      </h2>
+      
+      <div 
+        class="space-y-4 text-kori-dark"
+        use:animate={{ animation: 'fadeInRight', delay: 0.3 }}
+      >
+        <p class="text-lg">
+          Kori Café nació con el corazón en los Yungas y el alma en cada taza.
+
+
+        </p>
+        <p class="text-lg">
+          En medio de las montañas verdes de Coripata, donde el aire huele a tierra húmeda y trabajo honesto, hay familias que han cultivado café durante generaciones. Kori Café surge como un homenaje a ese legado: una marca que no solo ofrece café, sino que rescata la historia, el esfuerzo y el orgullo de ser bolivianos.
+        </p>
+        <p class="text-lg">
+          La palabra "Kori" significa "oro" en quechua, y eso es lo que representa para nosotros cada grano: un tesoro de sabor, cultura y raíz. Decidimos llevar ese oro a tus manos en un formato práctico, moderno y con identidad.
+Creemos que el café no tiene que ser importado para ser excelente. Bolivia tiene calidad, tiene tradición y tiene historias que merecen ser contadas. Con cada sobre de Kori Café, no solo te estás sirviendo una bebida: estás siendo parte de un movimiento que valora lo nuestro, que apoya al productor local y que transforma lo cotidiano en algo con sentido.
+ </p>
+      </div>
+    </div>
+    
+    <div 
+      class="md:w-1/2"
+      use:animate={{ animation: 'fadeIn', delay: 0.6 }}
+    >
+      <img 
+        src="/images/coffee-farm.jpg" 
+        alt="Café de Coripata" 
+        class="w-full rounded-xl shadow-lg"
+      />
+    </div>
+  </div>
+</section>

@@ -1,0 +1,168 @@
+---
+const recipes = [
+  {
+    id: "iced",
+    title: "Café helado casero",
+    description: "Refrescante y fácil para cualquier tarde calurosa.",
+    ingredients: [
+      "1 sobre de Kori Café (8 g)",
+      "100 ml de agua caliente",
+      "4 cubos de hielo",
+      "50 ml de leche (opcional)",
+      "Azúcar al gusto"
+    ],
+    steps: [
+      "Prepara el café expreso con tu bolsa de Kori Café usando 100 ml de agua caliente.",
+      "Coloca los cubos de hielo en un vaso.",
+      "Vierte el café sobre el hielo.",
+      "Agrega leche si deseas y endulza al gusto.",
+      "Mezcla y sirve frío."
+    ],
+    image: "/images/iced-coffee.jpg",
+    tips: "Para un toque especial, añade una bola de helado de vainilla."
+  },
+  {
+    id: "condensed",
+    title: "Café con leche condensada",
+    description: "Una opción dulce, intensa y reconfortante.",
+    ingredients: [
+      "1 sobre de Kori Café (8 g)",
+      "100 ml de agua caliente",
+      "2 cucharadas de leche condensada"
+    ],
+    steps: [
+      "Prepara tu café Kori Café como expreso.",
+      "En una taza, añade las 2 cucharadas de leche condensada.",
+      "Vierte el café caliente sobre la leche.",
+      "Mezcla bien y disfruta."
+    ],
+    image: "/images/vietnamese-coffee.jpg",
+    tips: "También puedes servirlo con hielo para una versión fría."
+  },
+  {
+    id: "affogato",
+    title: "Affogato Kori",
+    description: "Ideal para sorprender con poco.",
+    ingredients: [
+      "1 bola de helado de vainilla",
+      "1 sobre de Kori Café (8 g)",
+      "100 ml de agua caliente"
+    ],
+    steps: [
+      "Sirve una bola de helado en una taza o vaso pequeño.",
+      "Prepara el café con 100 ml de agua caliente.",
+      "Justo antes de servir, vierte el café caliente sobre el helado.",
+      "Disfruta de inmediato, combinando lo caliente con lo frío."
+    ],
+    image: "/images/affogato.jpg",
+    tips: "Usa helado de calidad premium para mejor resultado."
+  }
+];
+---
+
+<section id="recipes" class="py-16 bg-white">
+  <div class="container mx-auto px-6">
+    <h2 class="text-3xl md:text-4xl font-bold text-kori-brown mb-12 text-center">
+      Recetas con Kori Café
+    </h2>
+
+    <div class="flex flex-col md:flex-row gap-8 mb-12">
+      {recipes.map((recipe) => (
+        <button 
+          class={`recipe-tab px-6 py-3 rounded-full font-medium transition-all ${recipe.id === 'iced' ? 'bg-kori-brown text-white' : 'bg-gray-100 text-kori-dark hover:bg-kori-light'}`}
+          data-tab={recipe.id}
+        >
+          {recipe.title}
+        </button>
+      ))}
+    </div>
+
+    <div class="recipe-content">
+      {recipes.map((recipe) => (
+        <div 
+          id={recipe.id} 
+          class={`recipe-panel ${recipe.id === 'iced' ? 'block' : 'hidden'} bg-kori-beige rounded-xl p-8 md:p-12 shadow-md`}
+        >
+          <div class="flex flex-col md:flex-row gap-8 items-center">
+            <div class="md:w-1/2">
+              <img 
+                src={recipe.image} 
+                alt={recipe.title} 
+                class="w-full rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+            <div class="md:w-1/2">
+              <h3 class="text-2xl font-bold text-kori-brown mb-2">{recipe.title}</h3>
+              <p class="text-lg text-kori-dark mb-6">{recipe.description}</p>
+              
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                  <h4 class="text-xl font-semibold text-kori-brown mb-4">Ingredientes:</h4>
+                  <ul class="space-y-2">
+                    {recipe.ingredients.map((ingredient) => (
+                      <li class="flex items-start">
+                        <span class="inline-block w-1 h-1 mt-2 mr-2 bg-kori-brown rounded-full"></span>
+                        {ingredient}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <h4 class="text-xl font-semibold text-kori-brown mb-4">Preparación:</h4>
+                  <ol class="space-y-3">
+                    {recipe.steps.map((step, index) => (
+                      <li class="flex">
+                        <span class="inline-block mr-2 font-bold text-kori-brown">{index + 1}.</span>
+                        {step}
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              </div>
+              
+              {recipe.tips && (
+                <div class="mt-6 p-4 bg-kori-light rounded-lg border-l-4 border-kori-brown">
+                  <p class="font-medium text-kori-dark">💡 Tip: {recipe.tips}</p>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  document.querySelectorAll('.recipe-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Remove active class from all tabs
+      document.querySelectorAll('.recipe-tab').forEach(t => {
+        t.classList.remove('bg-kori-brown', 'text-white');
+        t.classList.add('bg-gray-100', 'text-kori-dark', 'hover:bg-kori-light');
+      });
+      
+      // Add active class to clicked tab
+      tab.classList.remove('bg-gray-100', 'hover:bg-kori-light');
+      tab.classList.add('bg-kori-brown', 'text-white');
+      
+      // Hide all panels
+      document.querySelectorAll('.recipe-panel').forEach(panel => {
+        panel.classList.add('hidden');
+      });
+      
+      // Show selected panel
+      const tabId = tab.getAttribute('data-tab');
+      document.getElementById(tabId).classList.remove('hidden');
+    });
+  });
+</script>
+
+<style>
+  .recipe-tab {
+    transition: all 0.3s ease;
+  }
+  .recipe-panel {
+    transition: opacity 0.3s ease;
+  }
+</style>

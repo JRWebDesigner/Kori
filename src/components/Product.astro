@@ -1,0 +1,48 @@
+---
+import { animate } from '../utils/animate.js';
+---
+
+<section class="py-16 px-8 bg-gray-50">
+  <div class="max-w-6xl mx-auto text-center">
+    <h2 
+      class="text-3xl md:text-4xl font-bold text-kori-brown mb-12"
+      use:animate={{ animation: 'fadeInDown' }}
+    >
+      Nuestro Producto
+    </h2>
+    
+    <div class="flex flex-col md:flex-row justify-center gap-8">
+      <!-- Tarjeta 1 -->
+      <div 
+        class="bg-white p-8 rounded-xl shadow-md w-full md:w-1/3 transition-all hover:-translate-y-2 hover:shadow-xl"
+        use:animate={{ animation: 'flipInX', delay: 0.2 }}
+      >
+        <div class="text-4xl mb-4">☕</div>
+        <h3 class="text-xl font-bold text-kori-brown mb-2">Café molido de origen boliviano</h3>
+        <p class="text-gray-700">Sobres individuales con 100 ml de café tipo expreso</p>
+      </div>
+      
+      <!-- Tarjeta 2 -->
+      <div 
+        class="bg-white p-8 rounded-xl shadow-md w-full md:w-1/3 transition-all hover:-translate-y-2 hover:shadow-xl"
+        use:animate={{ animation: 'flipInX', delay: 0.4 }}
+      >
+        <div class="text-4xl mb-4">🏔️</div>
+        <h3 class="text-xl font-bold text-kori-brown mb-2">Granos seleccionados de Coripata</h3>
+        <p class="text-gray-700">Zona cafetalera reconocida por su sabor y aroma</p>
+      </div>
+      
+      <!-- Tarjeta 3 -->
+      <div 
+        class="bg-white p-8 rounded-xl shadow-md w-full md:w-1/3 transition-all hover:-translate-y-2 hover:shadow-xl"
+        use:animate={{ animation: 'flipInX', delay: 0.6 }}
+      >
+        <div class="text-4xl mb-4">✨</div>
+        <h3 class="text-xl font-bold text-kori-brown mb-2">Práctico y con identidad cultural</h3>
+        <p class="text-gray-700">Diseño que celebra lo local y conserva la frescura</p>
+      </div>
+    </div>
+    <p class-'pt-10'>Kori Café es un café molido de origen boliviano, presentado en sobres individuales, que contienen 100 ml de café tipo expreso. Está elaborado con granos seleccionados de Coripata, Yungas — una zona cafetalera reconocida por su sabor, aroma y tradición.
+El producto combina calidad, practicidad e identidad cultural. Su presentación individual facilita el consumo diario en casa, en el trabajo o donde estés, sin perder el sabor auténtico de un café boliviano. Cada sobre está sellado para conservar su frescura y viene con un diseño que celebra lo local.</p>
+  </div>
+</section>

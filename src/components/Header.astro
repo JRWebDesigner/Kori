@@ -1,0 +1,96 @@
+---
+import { animate } from '../utils/animate.js';
+const navItems = [
+  { name: 'Inicio', href: '#hero' },
+  { name: 'Historia', href: '#history' },
+  { name: 'Producto', href: '#product' },
+  { name: 'Recetas', href: '#recipes' },
+  { name: 'Contacto', href: '#contact' }
+];
+---
+
+<header class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm">
+  <div class="container mx-auto px-6 py-4">
+    <div class="flex justify-between items-center">
+      <!-- Logo con animación -->
+      <a 
+        href="#hero" 
+        class="flex items-center space-x-2"
+        use:animate={{ animation: 'fadeInDown', duration: 0.8 }}
+      >
+        <img src='./favicon.png' class="w-22 h-14 flex items-center justify-center" />
+        
+      </a>
+
+      <!-- Menú desktop -->
+      <nav class="hidden md:block">
+        <ul class="flex space-x-8">
+          {navItems.map((item, index) => (
+            <li 
+              use:animate={{ animation: 'fadeInDown', duration: 0.8, delay: 0.1 * index }}
+            >
+              <a 
+                href={item.href} 
+                class="text-kori-dark hover:text-kori-brown transition-colors duration-300 relative group"
+              >
+                {item.name}
+                <span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-kori-brown transition-all duration-300 group-hover:w-full"></span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <!-- Menú móvil (hamburguesa) -->
+      <button class="md:hidden focus:outline-none" id="mobile-menu-button">
+        <svg class="w-6 h-6 text-kori-brown" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Menú móvil desplegable -->
+  <div class="md:hidden hidden bg-white w-full py-4 px-6 shadow-lg" id="mobile-menu">
+    <ul class="space-y-4">
+      {navItems.map((item) => (
+        <li>
+          <a 
+            href={item.href} 
+            class="block py-2 text-kori-dark hover:text-kori-brown transition-colors"
+          >
+            {item.name}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</header>
+
+<script is:inline>
+  // Interacción del menú móvil
+  document.getElementById('mobile-menu-button').addEventListener('click', () => {
+    const menu = document.getElementById('mobile-menu');
+    menu.classList.toggle('hidden');
+  });
+</script>
+
+<style>
+  /* Animación de subrayado */
+  .nav-underline {
+    position: relative;
+  }
+  .nav-underline::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #8B4513;
+    transition: width 0.3s ease;
+  }
+  .nav-underline:hover::after {
+    width: 100%;
+  }
+</style>
